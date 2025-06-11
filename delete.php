@@ -1,12 +1,17 @@
 <?php
 require 'config.php';
 
-$id = $_GET['id'];
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $stmt = $conn->prepare("DELETE FROM users WHERE id=?");
+    $stmt->bind_param("i", $id);
 
-$sql = "DELETE FROM users WHERE id=$id";
-if ($conn->query($sql) === TRUE) {
-    echo "Record deleted successfully. <a href='read.php'>Back to List</a>";
-} else {
-    echo "Error deleting record: " . $conn->error;
+    if ($stmt->execute()) {
+        header("Location: read.php");
+        exit();
+    } else {
+        echo "Error: " . $stmt->error;
+    }
 }
 ?>
+

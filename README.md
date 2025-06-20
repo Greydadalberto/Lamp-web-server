@@ -135,3 +135,5 @@ IAM Role	EC2 attached to role with CloudWatchAgentServerPolicy
 - Fully integrated CloudWatch monitoring and logging.
 - Real-time observability enabled via dashboards and logs.
 - Verified security, availability, and performance.
+
+
